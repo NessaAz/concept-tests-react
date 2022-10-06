@@ -1,8 +1,9 @@
-import './App.css';
+import './index.css';
 import Employee from './components/employee';
+import {useState} from 'react';
 
 function App() {
-  console.log('here are some of them');
+  const [role, setRole] = useState();
   const showEmployees = true;
 
   return (
@@ -10,10 +11,16 @@ function App() {
       {console.log('console can also be inside return')}
       {showEmployees ?(
       <div>
-        <Employee name='Anne' role='intern' />
-        <Employee name='CAleb' />
-        <Employee name='VIenna'  />
-        </div>
+        <input 
+          type='text' onChange={(e) =>{
+          console.log(e.target.value);
+          role = e.target.value;
+          }} 
+        />
+          <Employee name='Anne' role='intern' />
+          <Employee name='CAleb' role={role} />
+          <Employee name='VIenna'  />
+      </div>
       )
         :
         (<p>not viewable</p>)
